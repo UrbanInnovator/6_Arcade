@@ -201,15 +201,14 @@ const fullwinO = (arr) => {
   const spaceOcc = (event) => {
       let aim = event.target;
       let space = undefined;
-      if(aim.value === undefined) {
+      console.log(typeof aim.innerText);
+      if(aim.innerText === "") {
         space = false;
       } else space = true;
     return space
    }
 
 // Start Turn - this version is just to test. 
-// When placed in the full function, event won't be a parameter. Also, board & aim
-// will be declared outside this function.
 const startTurn = (event) => {
   let board = ticState.currentBoard;
   let start1 = undefined;
@@ -224,12 +223,10 @@ const startTurn = (event) => {
     start2 = true;
   } else start2 = false;
   
-  console.log(start1, start2);
+  // console.log(start1, start2);
   if(start1 && start2 === true) return true;
   if(start1 || start2 === false) return false;
 }
-
-// Switch Players
 
 
 // FullFunc
@@ -250,11 +247,12 @@ const play = (event) => {
       [players[0],players[1]] = [players[1],players[0]];
     }
   } 
-  console.log(board, fullWin(board));
+  // console.log(board, fullWin(board));
 }
 
 // reset
 const resetFunc = () => {
+  let board = ticState.currentBoard;
   for(let i = 0; i < 9; i++) {
     tics[i].innerText = "";
   }
